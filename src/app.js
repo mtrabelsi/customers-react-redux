@@ -1,19 +1,16 @@
 import React from 'react'
-import {render} from 'react-dom'
-import { Router, Route , hashHistory} from 'react-router'
+import { render } from 'react-dom'
+import { Router, Route , browserHistory} from 'react-router'
 
-import App from './modules/App'
-import Page1 from './modules/page1'
-import Page2 from './modules/page2'
-import NotFound from './modules/notfound'
-
+import './app.css'
+import CustomersList from './components/customer.list'
+import CustomerView from './components/customer.view'
+import NotFound from './components/notfound'
 
 render((
-  <Router history={hashHistory}>
-      <Route path="/" component={App}>
-        <Route path="/page1" component={Page1}/>
-        <Route path="/page2" component={Page2}/>
-        <Route path="*" component={NotFound}/>
-      </Route>
+  <Router history={browserHistory}>
+      <Route path="/" component={CustomersList} />
+      <Route path="/customer/:customer" component={CustomerView}/>
+      <Route path="*" component={NotFound}/>
   </Router>
 ), document.getElementById('root'))
