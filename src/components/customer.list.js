@@ -12,7 +12,7 @@ class CustomersList extends React.Component {
         this.onRowClick = this.onRowClick.bind(this)
     }
     onRowClick(index) {
-        console.log('row',index,'clicked')
+        this.props.removeCustomer(index)
     }
     render() {
         return (<div>
