@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import CustomerView from './../components/customer.view'
 
 const mapStateToProps = (state) => ({
+    customers: state.customers
 })
 
 const mapDispatchToProps = {
-  onTodoClick: () => console.log('simple action')
+  updateCustomer: () => console.log('simple action')
 }
 
 const ConnectedCustomerView = connect(

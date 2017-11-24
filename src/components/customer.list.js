@@ -10,14 +10,19 @@ class CustomersList extends React.Component {
     constructor(props) {
         super(props)
         this.onRowClick = this.onRowClick.bind(this)
+        this.onRowRemove =  this.onRowRemove.bind(this)
     }
     onRowClick(index) {
+        this.props.router.push(`/customer/${index}`)
+    }
+    onRowRemove(index) {
         this.props.removeCustomer(index)
     }
     render() {
         return (<div>
             <Table
                 className={null}
+                uniqueKey='customerID' // mandatory props for React performance/stability
                 columns={[{
                   key: 'customerID',
                   label: 'ID'
@@ -51,6 +56,7 @@ class CustomersList extends React.Component {
                 }]}
                 data={this.props.customers}
                 onRowClick={this.onRowClick}
+                onRowRemove={this.onRowRemove}
             />
         </div>)
     }

@@ -15,12 +15,17 @@ module.exports = {
   }), new ExtractTextWebpackPlugin('app.bundle.css')],
   module : {
     rules : [{
-      test : /\.css$/,
-      use : ExtractTextWebpackPlugin.extract({
-        fallback : 'style-loader',
-        use: 'css-loader'
-      })
-    },{
+            test: /\.scss$/,
+            use: ExtractTextWebpackPlugin.extract({
+                use: [{
+                    loader: "css-loader"
+                }, {
+                    loader: "sass-loader"
+                }],
+                // use style-loader in development
+                fallback: "style-loader"
+            })
+        }, {
       test: /\.js$/,
       exclude: /(node_modules)/,
       loader: 'babel-loader',

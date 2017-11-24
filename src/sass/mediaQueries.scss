@@ -1,0 +1,10 @@
+/*
+    mobile (including landscape)  - default: up to 1000px
+    tablet+: from 1000px
+*/
+
+@mixin tablet {
+    @media (min-width: 1000px) {
+        @content;
+    }
+}

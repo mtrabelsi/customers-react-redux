@@ -12,7 +12,7 @@ import CustomerViewLive from './redux/customer.container'
 import NotFound from './components/notfound'
 // Reducer is the Immuatable global function responsible for calculating the next state
 import Reducer from './redux/reducer'
-import './app.css'
+import './app.scss'
 
 // creating a logger to logout dispatched actions
 const loggerMiddleware = createLogger()
