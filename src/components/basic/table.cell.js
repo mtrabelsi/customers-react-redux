@@ -17,7 +17,7 @@ class Cell extends React.Component {
                             const date = Moment(this.props.dataRow[this.props.column.key])
                             return date.isValid() ? date.format(this.props.column.locale) : this.props.column.erroMsg
                         case DELETE: // delete action
-                            return <span onClick={ e => this.props.onRowRemove(this.props.i) }
+                            return <span onClick={ e => this.props.onRowRemove(e, this.props.i) }
                                          className='table__td-label table__td-label--red'>
                                          Delete
                                   </span>

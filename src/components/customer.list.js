@@ -15,7 +15,8 @@ class CustomersList extends React.Component {
     onRowClick(index) {
         this.props.router.push(`/customer/${index}`)
     }
-    onRowRemove(index) {
+    onRowRemove(e, index) {
+        e.stopPropagation()
         this.props.removeCustomer(index)
     }
     render() {
