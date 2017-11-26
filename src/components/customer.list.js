@@ -11,6 +11,10 @@ class CustomersList extends React.Component {
         super(props)
         this.onRowClick = this.onRowClick.bind(this)
         this.onRowRemove =  this.onRowRemove.bind(this)
+        this.addNew = this.addNew.bind(this)
+    }
+    addNew() {
+      this.props.router.push(`/customer/new`)
     }
     onRowClick(index) {
         this.props.router.push(`/customer/${index}`)
@@ -59,6 +63,7 @@ class CustomersList extends React.Component {
                 onRowClick={this.onRowClick}
                 onRowRemove={this.onRowRemove}
             />
+            <button onClick={this.addNew}>Add new</button>
         </div>)
     }
 }
