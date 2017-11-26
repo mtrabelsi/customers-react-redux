@@ -24,7 +24,7 @@ class CustomersList extends React.Component {
         this.props.removeCustomer(index)
     }
     render() {
-        return (<div>
+        return (<div className="app">
             <Table
                 className={null}
                 uniqueKey='customerID' // mandatory props for React performance/stability
@@ -63,7 +63,9 @@ class CustomersList extends React.Component {
                 onRowClick={this.onRowClick}
                 onRowRemove={this.onRowRemove}
             />
-            <button onClick={this.addNew}>Add new</button>
+            <div className="app__button-container app__button-container--one">
+              <button className="btn btn-primary" onClick={this.addNew}>Add new</button>
+            </div>
         </div>)
     }
 }
