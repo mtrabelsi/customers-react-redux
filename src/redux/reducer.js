@@ -5,14 +5,17 @@ function reducer(state = { customers: initState }, action) {
     case 'UPDATE_CUSTOMER':
       return {
           customers: [
-            ...state.customers,
-            [
-              action.customer
-            ]
+            ...state.customers.slice(0, Number(action.index)),
+            ...[action.customer],
+            ...state.customers.slice(Number(action.index) + 1)
           ]
       }
     case 'ADD_CUSTOMER':
-      return state.customers.concat([action.customer])
+      return {
+          customers: state.customers.concat([{...action.customer,
+              customerID: state.customers.length + 1
+            }])
+      }
     case 'REMOVE_CUSTOMER':
       return {
           customers: [

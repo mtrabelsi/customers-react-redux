@@ -22,5 +22,6 @@ function updateCustomer(customer, index) {
 
 export {
   addCustomer,
-  removeCustomer
+  removeCustomer,
+  updateCustomer
 }

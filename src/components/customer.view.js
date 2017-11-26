@@ -3,54 +3,83 @@ import React from 'react'
 class CustomerView extends React.Component {
     constructor(props) {
         super(props)
-        this.customer = this.props.customers[this.props.params.customer]
+        const tmpCustomer = this.props.customers[this.props.params.customer]
+        this.tmpState = tmpCustomer ? {
+            isNew: false,
+            customer: tmpCustomer
+          } : {
+            isNew: true,
+            customer: {
+              name: {
+              first: '',
+              last: ''
+            },
+            birthday: '',
+            gender: 'm',
+            customerLifetimeValue: 0
+          }
+        }
+
         this.onChange = this.onChange.bind(this)
         this.updateCustomer = this.updateCustomer.bind(this)
-        this.state = {
-            name: {
-              first: this.customer.name.first,
-              last: this.customer.name.last
-            },
-            birthday: this.customer.birthday,
-            gender: this.customer.gender,
-            customerLifetimeValue: this.customer.customerLifetimeValue
-        }
+        this.state = this.tmpState
     }
     updateCustomer() {
-        this.props.updateCustomer(this.state, this.props.params.customer)
+      if(this.state.isNew) { // new customer
+          this.props.addCustomer(this.state.customer)
+      } else { // update for existing one
+          this.props.updateCustomer(this.state.customer, this.props.params.customer)
+      }
+      // always redirect after any operation
+      this.props.router.push(`/`)
     }
     onChange(elm) {
       const inputValue = elm.target.value
       switch (elm.target.name) {
         case 'firstName':
             this.setState((prevState) => ({
-              name: {
-                first: inputValue,
-                last: prevState.name.last
+              customer: {
+                  ...prevState.customer,
+                  name: {
+                    first: inputValue,
+                    last: prevState.customer.name.last
+                  }
               }
             }))
           break;
           case 'lastName':
               this.setState((prevState) => ({
-                name: {
-                  first: prevState.name.first,
-                  last: inputValue
+                customer: {
+                  ...prevState.customer,
+                  name: {
+                    first: prevState.customer.name.first,
+                    last: inputValue
+                  }
                 }
               }))
             break;
           case 'gender':
               this.setState({
-                gender: inputValue
+                customer: {
+                  ...this.state.customer,
+                  gender: inputValue
+                }
               })
             break;
           case 'lifeTime':
               this.setState({
-                customerLifetimeValue: inputValue
+                customer: {
+                  ...this.state.customer,
+                  customerLifetimeValue: inputValue
+                }
               })
             break;
           case 'birthday':
               this.setState({
-                birthday: inputValue
+                customer: {
+                  ...this.state.customer,
+                  birthday: inputValue
+                }
               })
             break;
         default:
@@ -59,14 +88,14 @@ class CustomerView extends React.Component {
     }
     render() {
       return <div>
-            <input type="text" name="firstName" onChange={this.onChange} value={this.state.name.first} />
-            <input type="text" name="lastName" onChange={this.onChange} value={this.state.name.last} />
-            <input name="birthday" onChange={this.onChange} value={this.state.birthday} type="date" />
-            <select name="gender" onChange={this.onChange} value={this.state.gender}>
+            <input type="text" name="firstName" onChange={this.onChange} value={this.state.customer.name.first} />
+            <input type="text" name="lastName" onChange={this.onChange} value={this.state.customer.name.last} />
+            <input name="birthday" onChange={this.onChange} value={this.state.customer.birthday} type="date" />
+            <select name="gender" onChange={this.onChange} value={this.state.customer.gender}>
               <option value="m">m</option>
               <option value="w">w</option>
             </select>
-            <input type="text" name="lifeTime" onChange={this.onChange} value={this.state.customerLifetimeValue} />
+            <input type="text" name="lifeTime" onChange={this.onChange} value={this.state.customer.customerLifetimeValue} />
             <button onClick={this.updateCustomer}>Update</button>
       </div>
     }
