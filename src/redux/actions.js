@@ -12,6 +12,14 @@ function removeCustomer(index) {
   }
 }
 
+function updateCustomer(customer, index) {
+  return {
+    type: 'UPDATE_CUSTOMER',
+    index: index,
+    customer: customer
+  }
+}
+
 export {
   addCustomer,
   removeCustomer

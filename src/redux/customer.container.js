@@ -6,9 +6,9 @@ const mapStateToProps = (state) => ({
     customers: state.customers
 })
 
-const mapDispatchToProps = {
-  updateCustomer: () => console.log('simple action')
-}
+const mapDispatchToProps = (dispatch) => ({
+  updateCustomer: (customer, index) => console.log('simple action')
+})
 
 const ConnectedCustomerView = connect(
   mapStateToProps,

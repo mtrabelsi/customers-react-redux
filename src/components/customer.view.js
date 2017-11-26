@@ -5,6 +5,7 @@ class CustomerView extends React.Component {
         super(props)
         this.customer = this.props.customers[this.props.params.customer]
         this.onChange = this.onChange.bind(this)
+        this.updateCustomer = this.updateCustomer.bind(this)
         this.state = {
             name: {
               first: this.customer.name.first,
@@ -14,6 +15,9 @@ class CustomerView extends React.Component {
             gender: this.customer.gender,
             customerLifetimeValue: this.customer.customerLifetimeValue
         }
+    }
+    updateCustomer() {
+        this.props.updateCustomer(this.state, this.props.params.customer)
     }
     onChange(elm) {
       const inputValue = elm.target.value
@@ -55,7 +59,6 @@ class CustomerView extends React.Component {
     }
     render() {
       return <div>
-          <form>
             <input type="text" name="firstName" onChange={this.onChange} value={this.state.name.first} />
             <input type="text" name="lastName" onChange={this.onChange} value={this.state.name.last} />
             <input name="birthday" onChange={this.onChange} value={this.state.birthday} type="date" />
@@ -64,7 +67,7 @@ class CustomerView extends React.Component {
               <option value="w">w</option>
             </select>
             <input type="text" name="lifeTime" onChange={this.onChange} value={this.state.customerLifetimeValue} />
-          </form>
+            <button onClick={this.updateCustomer}>Update</button>
       </div>
     }
 }
