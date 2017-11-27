@@ -27,5 +27,7 @@ function reducer(state = { customers: initState }, action) {
       return state
   }
 }
-
+export {
+  initState
+}
 export default reducer
