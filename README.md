@@ -15,7 +15,9 @@ a running demo :
  ## install
 
  1- clone repo https://github.com/mtrabelsi/customers-react-redux.git
+
  2- npm i
+
  3- npm run dev (dev env) or npm run prod (prod env -  minified assets)
 
  ## Stack
@@ -25,7 +27,9 @@ a running demo :
 
  ## Test
  only important and critical features are tested ( action creators and Redux reducer ).
-for running test please use:  npm run test
+for running test please use:  
+
+ npm run test
 
  ## Bootsrap
  Bootsrap is used but ONLY for styling buttons and inputs :- )
@@ -34,4 +38,5 @@ for running test please use:  npm run test
 ## Disclaimer
 
 x - no linter added
+
 x - react components are not tested themselves, however all possible data/action dispatch is fully tested
