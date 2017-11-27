@@ -5,7 +5,7 @@
 please see the table on smaller width (< 1000px)
 - node server and universal rendering (linked react/express router)
 - ES6 syntax/ webpack
-- Real time debugger to see data traveling ( please open your chrome console and see actions being dispatched )
+- Real time debugger to see data traveling ([please open your chrome console and see actions being dispatched](https://github.com/mtrabelsi/customers-react-redux/blob/master/Screen%20Shot%202017-11-27%20at%2008.48.09.png)  )
 - React/redux architecture
 - unit tests for redux to make sure that ALL data change and side effects works as indented
 
