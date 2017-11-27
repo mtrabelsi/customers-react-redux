@@ -10,7 +10,7 @@ please see the table on smaller width (< 1000px)
 - unit tests for redux to make sure that ALL data change and side effects works as indented
 
 ## demo
-a running demo :
+a running demo : http://gameole.com:8001/
 
  ## install
 
@@ -19,6 +19,8 @@ a running demo :
  2- npm i
 
  3- npm run dev (dev env) or npm run prod (prod env -  minified assets)
+
+ 4- node server.js
 
  ## Stack
  - Node server for file serving and universal rendering
